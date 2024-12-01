@@ -1,23 +1,24 @@
 ﻿#include <iostream>
 
-void evendigits(long long& nums, int& ans)
+void evendigits(long long& nums, int& ans) //Метод вычисляет кол-во четных цифр в long long числе
 {
-	int c = 10;
-	if ((nums % c) % 2 == 0)
+	int c = 10;                            //Объявляем и инициализируем коэфициент изменения nums
+	if ((nums % c) % 2 == 0)               //Если последняя цифра чётная
 	{
-		ans++;
+		ans++;                             //Инкрементируем значение счётчика
 	}
-	nums /= c;
-	while (nums > 0)
+	nums /= c;                             //Отбрасываем последнюю цифру
+	while (nums > 0)                       //До тех пор пока число long long больше 0 
 	{
-		evendigits(nums, ans);
+		evendigits(nums, ans);             //вызываем метод внутри самого себя(рекурсия)
 	}
 }
 
 int main()
 {
-	long long n = 9223372036854775806;
-	int a = 0;
-	evendigits(n, a);
-	std::cout << ' ' << a << std::endl;
+	long long n = 9223372036854775806;    //Объявляем и инициализируем число long long   
+	int a = 0;                            //Объявляем и инициализируем счётчик
+	evendigits(n, a);                     //Вызываем метод
+	std::cout << ' ' << a << std::endl;   //Выводим значение счётчика
+	return 0;
 }
